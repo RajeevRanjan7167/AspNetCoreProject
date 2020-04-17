@@ -58,15 +58,15 @@ namespace AspNetCoreApp.API.Controllers
 
             var claims = new[]
             {
-                    new Claim(ClaimTypes.NameIdentifier,userForRepo.Id.ToString()),
-                    new Claim(ClaimTypes.Name, userForRepo.Username)
-                };
+                        new Claim(ClaimTypes.NameIdentifier,userForRepo.Id.ToString()),
+                        new Claim(ClaimTypes.Name, userForRepo.Username)
+                    };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
             .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
-            var creds= new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
-            
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
             var TokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -77,10 +77,10 @@ namespace AspNetCoreApp.API.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(TokenDescriptor);
 
-            return Ok(new {
-                token= tokenHandler.WriteToken(token)
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token)
             });
-
-         }
+        }
     }
 }

@@ -7,6 +7,7 @@ D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\AspNetCoreAp
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\AspNetCoreApp.API.runtimeconfig.dev.json
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\AspNetCoreApp.API.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\AspNetCoreApp.API.pdb
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
@@ -30,10 +31,17 @@ D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Ex
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\SQLitePCLRaw.provider.dynamic_cdecl.dll
+D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\runtimes\alpine-x64\native\libe_sqlite3.so
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\runtimes\linux-arm\native\libe_sqlite3.so
@@ -59,11 +67,3 @@ D:\Projects\AspNetCoreApp\AspNetCoreApp.API\obj\Debug\netcoreapp3.1\staticwebass
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\obj\Debug\netcoreapp3.1\AspNetCoreApp.API.dll
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\obj\Debug\netcoreapp3.1\AspNetCoreApp.API.pdb
 D:\Projects\AspNetCoreApp\AspNetCoreApp.API\obj\Debug\netcoreapp3.1\AspNetCoreApp.API.genruntimeconfig.cache
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Projects\AspNetCoreApp\AspNetCoreApp.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
