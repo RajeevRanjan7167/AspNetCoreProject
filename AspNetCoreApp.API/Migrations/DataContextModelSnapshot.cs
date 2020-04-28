@@ -16,11 +16,77 @@ namespace AspNetCoreApp.API.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3");
 
-            modelBuilder.Entity("AspNetCoreApp.API.Models.User", b =>
+            modelBuilder.Entity("AspNetCoreApp.API.Models.Fields", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("created_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("fi_Amount")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("fi_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte>("is_active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("modified_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Fields");
+                });
+
+            modelBuilder.Entity("AspNetCoreApp.API.Models.Photo", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ResourcesMSTID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("dateAdded")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("ismain")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("url")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ResourcesMSTID");
+
+                    b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("AspNetCoreApp.API.Models.ResourcesMST", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Interests")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LookingFor")
+                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("PasswordHash")
                         .HasColumnType("BLOB");
@@ -28,12 +94,101 @@ namespace AspNetCoreApp.API.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("BLOB");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("created_by")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("TEXT");
 
-                    b.ToTable("Users");
+                    b.Property<string>("modified_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte>("rm_Active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("rm_City")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Contactno")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Country")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("rm_DateOfBirth")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_First_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Gender")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Introduction")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_KnownAS")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("rm_LastActive")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Last_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Login_Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Middle_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("rm_Postalcode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("rm_Role_Id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("rm_address")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Resources");
+                });
+
+            modelBuilder.Entity("AspNetCoreApp.API.Models.Roles", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("created_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte>("is_active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("modified_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("role_Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("AspNetCoreApp.API.Models.Value", b =>
@@ -48,6 +203,44 @@ namespace AspNetCoreApp.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("AspNetCoreApp.API.Models.city", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("created_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ct_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte>("is_active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("modified_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("City");
+                });
+
+            modelBuilder.Entity("AspNetCoreApp.API.Models.Photo", b =>
+                {
+                    b.HasOne("AspNetCoreApp.API.Models.ResourcesMST", "ResourcesMST")
+                        .WithMany("Photos")
+                        .HasForeignKey("ResourcesMSTID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

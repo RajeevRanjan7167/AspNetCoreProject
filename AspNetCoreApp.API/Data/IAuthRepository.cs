@@ -5,8 +5,8 @@ namespace AspNetCoreApp.API.Data
 {
     public interface IAuthRepository
     {
-         Task<User> Register(User user,string password);
-         Task<User> Login(string username, string password);
+         Task<ResourcesMST> Register(ResourcesMST resource,string password);
+         Task<ResourcesMST> Login(string username, string password);
          Task<bool> UserExists(string username);
     }
 }

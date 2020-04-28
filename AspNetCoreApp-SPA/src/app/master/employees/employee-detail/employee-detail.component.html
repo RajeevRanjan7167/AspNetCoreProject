@@ -1,0 +1,61 @@
+<div class="container mt-3">
+  <div class="row">
+    <h1> {{resource.rm_Login_Id}}'s Profile </h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{ resource?.photoUrl || '../../../../../../assets/userIcon.png' }}" alt="{{ resource?.rm_KnownAS }}"/>
+        
+        <div class="card-body">
+          <div>
+            <strong>Name:</strong>
+            <p> {{resource?.rm_First_Name}} {{resource?.rm_Middle_Name}} {{resource?.rm_Last_Name}}</p>
+          </div>
+
+          <div>
+            <strong>Location:</strong>
+            <p>{{resource?.rm_City}}, {{resource?.rm_Country}}</p>
+          </div>
+
+          <div>
+            <strong>Age:</strong>
+            <p>{{resource?.age}}</p>
+          </div>
+          <div>
+            <strong>Last Active:</strong>
+            <p>{{resource?.rm_LastActive}}</p>
+          </div>          
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Like</button>
+            <button class="btn btn-success w-100">Message</button>
+          </div>
+        </div>      
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="employee-tabset">
+          <tab heading="About {{resource?.rm_KnownAS}}">
+              <h4>Description</h4>
+              <p>{{resource?.rm_Introduction}}</p>
+              <h4>Looking For</h4>
+              <p>{{resource?.lookingFor}}</p>
+          </tab>
+          <tab heading="Interests">
+            <h4>Interests</h4>
+            <p>{{resource?.interests}}</p>
+          </tab>
+          <!-- <tab heading="Photos">
+            <p>Photos will go here</p>
+          </tab> -->
+          <tab heading="Message">
+            <p>Messages will go here</p>
+          </tab>                    
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

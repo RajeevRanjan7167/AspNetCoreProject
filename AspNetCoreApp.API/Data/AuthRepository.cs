@@ -13,9 +13,9 @@ namespace AspNetCoreApp.API.Data
             _context = context;
 
         }
-        public async Task<User> Login(string username, string password)
+        public async Task<ResourcesMST> Login(string username, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            var user = await _context.Resources.FirstOrDefaultAsync(x => x.rm_Login_Id == username);
 
             if (user == null)
                 return null;
@@ -37,7 +37,7 @@ namespace AspNetCoreApp.API.Data
             }
         }
 
-        public async Task<User> Register(User user, string password)
+        public async Task<ResourcesMST> Register(ResourcesMST user, string password)
         {
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -45,7 +45,7 @@ namespace AspNetCoreApp.API.Data
             user.PasswordSalt = passwordSalt;
             user.PasswordHash = passwordHash;
 
-            await _context.Users.AddAsync(user);
+            await _context.Resources.AddAsync(user);
             await _context.SaveChangesAsync();
             return user;
 
@@ -62,7 +62,7 @@ namespace AspNetCoreApp.API.Data
 
         public async Task<bool> UserExists(string username)
         {
-            if(await _context.Users.AnyAsync(x=> x.Username== username))
+            if(await _context.Resources.AnyAsync(x=> x.rm_Login_Id == username))
                 return true;
             
             return false;

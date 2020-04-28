@@ -1,0 +1,69 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1> Your Profile </h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <p> <strong>Information</strong>You have made change. Any unsave changes will be lost !</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{ resource?.photoUrl }}" alt="{{ resource?.rm_KnownAS }}"/>
+        
+        <div class="card-body">
+          <div>
+            <strong>Name:</strong>
+            <p> {{resource?.rm_First_Name}} {{resource?.rm_Middle_Name}} {{resource?.rm_Last_Name}}</p>
+          </div>
+
+          <div>
+            <strong>Location:</strong>
+            <p>{{resource?.rm_City}}, {{resource?.rm_Country}}</p>
+          </div>
+
+          <div>
+            <strong>Age:</strong>
+            <p>{{resource?.age}}</p>
+          </div>
+          <div>
+            <strong>Last Active:</strong>
+            <p>{{resource?.rm_LastActive}}</p>
+          </div>          
+        </div>
+        <div class="card-footer">
+          <button [disabled]="!editForm.dirty" form = "editFormClt" class="btn btn-success btn-block ">Save</button>
+        </div>     
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="employee-tabset">
+          <tab heading="Edit Profile">            
+            <form #editForm="ngForm" id="editFormClt" (ngSubmit) = "updateResource()">
+              <h4>Description</h4>
+              <textarea name="introduction" rows="6" class="form-control" [(ngModel)]='resource.rm_Introduction' ></textarea>
+              <h4>Looking For</h4>
+              <textarea name="LookingFor" rows="6" class="form-control" [(ngModel)]="resource.lookingFor"></textarea>
+              <h4>Interests</h4>
+              <textarea name="Interests" rows="6" class="form-control" [(ngModel)]="resource.interests"></textarea>  
+              <h4>Location Details: </h4>
+              <div class="form-inline">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" [(ngModel)]="resource.rm_City">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" name="country" [(ngModel)]="resource.rm_Country" >                
+              </div>                          
+            </form>
+          </tab>          
+          <tab heading="Edit Photo">
+            <p>Photo edit will go here</p>
+          </tab>                    
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>

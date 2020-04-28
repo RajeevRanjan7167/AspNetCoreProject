@@ -1,3 +1,18 @@
 .dropdown-toggle, .dropdown-item{
     cursor: pointer;
 }
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+img {
+  max-width: 50px;
+  border: 2px solid white;
+  display: none;
+}

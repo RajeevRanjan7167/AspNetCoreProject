@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AspNetCoreApp.API.Data;
 using AspNetCoreApp.API.Dtos;
+using AutoMapper;
+using AspNetCoreApp.API.Helpers;
 using AspNetCoreApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -18,49 +20,45 @@ namespace AspNetCoreApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        private readonly IMapper _mapper;
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
+            _mapper = mapper;
             _config = config;
             _repo = repo;
         }
 
         [HttpPost("register")]
-        // public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register(ResourceForRegisterDTO resourceForRegisterDTO)
         {
-            // // Validate request
-            // if(!ModelState.IsValid)
-            //     return BadRequest(ModelState);
+            resourceForRegisterDTO.rm_Login_Id = resourceForRegisterDTO.rm_Login_Id.ToLower();
 
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
-
-            if (await _repo.UserExists(userForRegisterDto.Username))
+            if (await _repo.UserExists(resourceForRegisterDTO.rm_Login_Id))
                 return BadRequest("Username already exists !!");
 
-            var userToCreate = new User
-            {
-                Username = userForRegisterDto.Username,
-            };
+            var createToResource = _mapper.Map<ResourcesMST>(resourceForRegisterDTO);            
+            var createdResource = await _repo.Register(createToResource, resourceForRegisterDTO.password);
 
-            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
+            var resourceToReturn = _mapper.Map<ResourceForListDTO>(createdResource);
 
-            return StatusCode(201);
+            return CreatedAtRoute("GetResource", new { Controller ="Resources", 
+                id = createdResource.ID},resourceToReturn);
         }
 
         [HttpPost("login")]
 
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
-            var userForRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+            var userForRepo = await _repo.Login(userForLoginDto.rm_Login_Id.ToLower(), userForLoginDto.password);
 
             if (userForRepo == null)
                 return Unauthorized();
 
             var claims = new[]
-            {
-                        new Claim(ClaimTypes.NameIdentifier,userForRepo.Id.ToString()),
-                        new Claim(ClaimTypes.Name, userForRepo.Username)
-                    };
+                {
+                    new Claim(ClaimTypes.NameIdentifier,userForRepo.ID.ToString()),
+                    new Claim(ClaimTypes.Name, userForRepo.rm_Login_Id)
+                };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
             .GetBytes(_config.GetSection("AppSettings:Token").Value));

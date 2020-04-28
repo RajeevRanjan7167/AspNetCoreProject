@@ -1,0 +1,140 @@
+<div class="content">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header card-header-primary" style="height:45px">
+            <h4 class="card-title">Data Miner</h4>
+          </div>
+
+          <div class="card-body">
+            <form  [formGroup]="dataMinerForm" (ngSubmit)="dataMinerCreation()" >
+              
+              <div class="row">
+
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Project</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group bmd-form-group">                    
+                    <select class="browser-default custom-select" id="project" formControlName="project" (change)="projectChange($event)">
+                      <option selected *ngFor="let proj of City" [ngValue]="proj">{{proj}}</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Team</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <select class="browser-default custom-select" id="team" formControlName="team" (change)="teamChange($event)">
+                    <option selected *ngFor="let team of flaglst" [ngValue]="team">{{team}}</option>
+                  </select>
+                </div>
+
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Member</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <select class="browser-default custom-select" id="member" formControlName="member" (change)="menmberChange($event)">
+                    <option selected *ngFor="let member of flaglst" [ngValue]="member">{{member}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Release</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group bmd-form-group">
+                    <select class="browser-default custom-select" id="release" formControlName="release" (change)="releaseChange($event)">
+                      <option selected *ngFor="let release of flaglst" [ngValue]="release">{{release}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">WorkType</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <select class="browser-default custom-select" id="worktype" formControlName="worktype" (change)="stateChange($event)" >
+                    <option selected *ngFor="let worktype of flaglst" [ngValue]="worktype">{{worktype}}</option>
+                  </select>
+                </div>
+
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">State</label>
+                  </div>
+                </div>                 
+                <div class="col-sm-3">
+                  <div class="form-group bmd-form-group">
+                    <select class="browser-default custom-select" id="state" formControlName="state">
+                      <option selected *ngFor="let state of flaglst" [ngValue]="state">{{state}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>              
+
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">From</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group bmd-form-group">
+                    <input class="form-control" placeholder="Date from" 
+                    id="datefrom" formControlName="datefrom" type="text" 
+                    bsDatepicker [bsConfig]="bsConfig" data-toggle="tooltip" title="Please choose date range from">
+                  </div>
+                </div>
+
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">To</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <input class="form-control" placeholder="Date To" id="dateto" formControlName="dateto" type="text" 
+                        bsDatepicker [bsConfig]="bsConfig" data-toggle="tooltip" title="Please choose date range to">
+                </div>                
+              </div>    
+
+              <div class="form-group text-center">
+                <button class="btn btn-primary btn mr-2" type="release">Release</button>
+                <button class="btn btn-success btn mr-2" type="submit">Process</button>
+                <button class="btn btn-danger " (click)="cancel()" type="button">Cancel</button>
+              </div>  
+              <div class="row">
+                <div class="col-md-12">   
+                  <div class="form-group bmd-form-group">
+                    <ag-grid-angular style="height: 350px;" colResizeDefault='shift' 
+                          class="ag-theme-alpine" rowSelection='single'
+                          (rowClicked)='onRowClicked($event)' (cellClicked)='onCellClicked($event)' (selectionChanged) = 'onSelectionChanged($event)'
+                        class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+                        [overlayLoadingTemplate]="loadingTemplate" [overlayNoRowsTemplate]="noRowsTemplate" >
+                    </ag-grid-angular>                 
+                  </div>
+                </div>   
+              </div>               
+
+            </form>
+          </div>          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

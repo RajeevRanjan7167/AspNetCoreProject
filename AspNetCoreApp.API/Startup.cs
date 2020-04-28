@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AspNetCoreApp.API.Data;
 using AspNetCoreApp.API.Helpers;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -35,9 +36,19 @@ namespace AspNetCoreApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                             .AddNewtonsoftJson(opt => {
+                                opt.SerializerSettings.ReferenceLoopHandling =
+                                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                             });
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
+            services.AddTransient<seed>();
+            services.AddAutoMapper(typeof(ResourceRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IResourceRepository,ResourceRepository>();
+            services.AddScoped<IRoleRepository,RoleRepository>();
+            services.AddScoped<IFieldRepository,FieldRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                                     .AddJwtBearer(options =>
                                     {
@@ -50,6 +61,7 @@ namespace AspNetCoreApp.API
                                             ValidateAudience = false
                                         };
                                     });
+            //services.AddScoped<logUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

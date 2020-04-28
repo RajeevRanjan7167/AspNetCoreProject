@@ -1,0 +1,73 @@
+<div class="content">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header card-header-primary" style="height:45px">
+            <h4 class="card-title">City</h4>
+          </div>
+
+          <div class="card-body">
+            <form  [formGroup]="cityForm" (ngSubmit)="cityCreation()" >
+              
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group bmd-form-group">
+                    <input type="text" class="form-control" id="cityname" formControlName="cityname" placeholder="Name">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group bmd-form-group">                    
+                    <input type="text" class="form-control" id="districtname" formControlName="districtname" placeholder="District Name">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group bmd-form-group">
+                    <input type="text" class="form-control"  id="DistrictHeadQuarters" formControlName="DistrictHeadQuarters" placeholder="District head quarters">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group bmd-form-group">
+                    <input type="text" class="form-control" id="statename" formControlName="statename" placeholder="State Name">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group bmd-form-group">                    
+                    <input type="text" class="form-control" id="countryname"  formControlName="countryname" placeholder="Country Name">
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group bmd-form-group">
+                    <input type="text" class="form-control" id="postalcode" formControlName="postalcode" placeholder="Postal Code">
+                  </div>
+                </div>
+              </div>              
+
+              <div class="form-group text-center">
+                <button class="btn btn-success btn mr-2" type="submit">Submit</button>
+                <button class="btn btn-danger " (click)="cancel()" type="button">Cancel</button>
+              </div>  
+              <div class="row">
+                <div class="col-md-12">   
+                  <div class="form-group bmd-form-group">
+                    <ag-grid-angular style="height: 350px;" colResizeDefault='shift' 
+                          class="ag-theme-alpine" rowSelection='single'
+                          (rowClicked)='onRowClicked($event)' (cellClicked)='onCellClicked($event)' (selectionChanged) = 'onSelectionChanged($event)'
+                        class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+                        [overlayLoadingTemplate]="loadingTemplate" [overlayNoRowsTemplate]="noRowsTemplate" >
+                    </ag-grid-angular>                 
+                  </div>
+                </div>   
+              </div>               
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
