@@ -26,6 +26,27 @@ namespace AspNetCoreApp.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Components",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    com_Name = table.Column<string>(nullable: true),
+                    com_Ext_Name = table.Column<string>(nullable: true),
+                    groupId = table.Column<int>(nullable: false),
+                    rolesId = table.Column<int>(nullable: false),
+                    created_on = table.Column<DateTime>(nullable: false),
+                    created_by = table.Column<string>(nullable: true),
+                    modified_by = table.Column<string>(nullable: true),
+                    modified_on = table.Column<DateTime>(nullable: false),
+                    is_active = table.Column<byte>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Components", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Fields",
                 columns: table => new
                 {
@@ -42,6 +63,25 @@ namespace AspNetCoreApp.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fields", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    group_Name = table.Column<string>(nullable: true),
+                    rolesId = table.Column<int>(nullable: false),
+                    created_on = table.Column<DateTime>(nullable: false),
+                    created_by = table.Column<string>(nullable: true),
+                    modified_by = table.Column<string>(nullable: true),
+                    modified_on = table.Column<DateTime>(nullable: false),
+                    is_active = table.Column<byte>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -147,7 +187,13 @@ namespace AspNetCoreApp.API.Migrations
                 name: "City");
 
             migrationBuilder.DropTable(
+                name: "Components");
+
+            migrationBuilder.DropTable(
                 name: "Fields");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Photos");

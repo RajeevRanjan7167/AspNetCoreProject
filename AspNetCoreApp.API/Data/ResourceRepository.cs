@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AspNetCoreApp.API.Data
 {
     public class ResourceRepository : IResourceRepository
-    {
+    {        
         private readonly DataContext _context;        
         public ResourceRepository(DataContext context)
         {

@@ -10,8 +10,8 @@ namespace AspNetCoreApp.API.Data
         void Delete<T>(T entity) where T: class;
         Task<bool> SaveAll();
         Task<IEnumerable<Roles>> GetRoles();
-        Task<Roles> GetRole(int Id);
-        Task<Roles> GenerateRole(Roles role);
-        Task<bool> UserExists(string username);
+        Task<Roles> GetRole(int _Id);
+        Task<Roles> GenerateRole(Roles _role);
+        Task<bool> UserExists(string _roleName);
     }
 }

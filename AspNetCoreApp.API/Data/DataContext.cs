@@ -12,5 +12,7 @@ namespace AspNetCoreApp.API.Data
         public DbSet<Fields> Fields { get; set; }
         public DbSet<city> City { get; set; }
         public DbSet<Roles> Roles { get; set; }
+        public DbSet<Groups> Groups { get; set; }
+        public DbSet<components> Components { get; set; }
     }
 }

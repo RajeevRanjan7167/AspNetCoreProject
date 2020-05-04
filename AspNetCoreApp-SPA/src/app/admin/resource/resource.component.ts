@@ -133,5 +133,4 @@ export class ResourceComponent implements OnInit {
 
   cancel() {
   }
-  
 }

@@ -48,6 +48,38 @@ namespace AspNetCoreApp.API.Migrations
                     b.ToTable("Fields");
                 });
 
+            modelBuilder.Entity("AspNetCoreApp.API.Models.Groups", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("created_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("group_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte>("is_active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("modified_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("rolesId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Groups");
+                });
+
             modelBuilder.Entity("AspNetCoreApp.API.Models.Photo", b =>
                 {
                     b.Property<int>("ID")
@@ -232,6 +264,44 @@ namespace AspNetCoreApp.API.Migrations
                     b.HasKey("id");
 
                     b.ToTable("City");
+                });
+
+            modelBuilder.Entity("AspNetCoreApp.API.Models.components", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("com_Ext_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("com_Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("created_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("created_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("groupId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<byte>("is_active")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("modified_by")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("modified_on")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("rolesId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Components");
                 });
 
             modelBuilder.Entity("AspNetCoreApp.API.Models.Photo", b =>

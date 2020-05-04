@@ -8,6 +8,9 @@
 @import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
 @import "../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css";
 
+/* @import "../node_modules/@ng-select/ng-select/themes/material.theme.css"; */
+@import "../node_modules/@ng-select/ng-select/themes/default.theme.css";
+
 .tab-panel {
     border: 1px solid #ddd;
     padding: 10px;

@@ -11,5 +11,6 @@ namespace AspNetCoreApp.API.Dtos.roleDTO
         public string modified_by { get; set; }
         public DateTime modified_on { get; set; }        
         public byte is_active { get; set; }
+        public string strContext { get; set; }
     }
 }

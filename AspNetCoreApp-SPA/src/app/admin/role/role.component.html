@@ -8,7 +8,7 @@
           </div>
 
           <div class="card-body">
-            <form  [formGroup]="roleForm" (ngSubmit)="roleCreation()" >
+            <form  [formGroup]="roleForm" (ngSubmit)="roleCRUD()" >
               <div class="row">
                 
                 <div class="col-sm-1">
@@ -19,7 +19,7 @@
 
                 <div class="col-md-8">
                   <div class="form-group bmd-form-group">
-                    <input type="text" class="form-control" formControlName="role_Name" placeholder="Role Name"
+                    <input type="text" class="form-control" [readonly] = "isDisabled" id="roleName" formControlName="role_Name" placeholder="Role Name"
                     data-toggle="tooltip" data-placement="top" title="Enter the role name" 
                     [ngClass]="{'is-invalid': roleForm.get('role_Name').errors && roleForm.get('role_Name').touched}" >
                     <div class="invalid-feedback">Plesae choose role name </div>
@@ -34,24 +34,26 @@
 
                 <div class="col-md-2">
                   <div class="form-group bmd-form-group">
-                    <select class="browser-default custom-select" id="flag" formControlName="flag">
-                      <option selected *ngFor="let flag of flaglst" [ngValue]="flag">{{flag}}</option>
-                    </select>
+                    <ng-select [items]="flaglst" bindLabel="name" bindValue="id"
+                        placeholder="Select Flag" formControlName="is_active" [(ngModel)]="selectedFlag">
+                        <ng-option [value]="flag.id" [disabled]="isDisabled" *ngFor="let flag of flaglst">
+                          {{flag.name}}
+                      </ng-option>
+                    </ng-select>                    
                   </div>
                 </div>
-
               </div>
 
               <div class="form-group text-center">
-                <button class="btn btn-success btn mr-2" type="submit">Create</button>
-                <button class="btn btn-danger " (click)="cancel()" type="button">Cancel</button>
+                <button class="button button1 transition-duration: 0.4s; btn mr-2"  [disabled]="isDisabled" type="submit">{{btnString}}</button>
+                <button class="button button3 transition-duration: 0.4s; btn mr-2" (click)="cancel()" type="button">Cancel</button>
               </div> 
 
               <div class="row">
                 <div class="col-md-12">   
                   <div class="form-group bmd-form-group">
                     <ag-grid-angular style="height: 350px;"  colResizeDefault='shift' class="ag-theme-alpine" rowSelection='single'
-                    (rowClicked)='onRowClicked($event)' (cellClicked)='onCellClicked($event)' (selectionChanged) = 'onSelectionChanged($event)'
+                     (cellClicked)='onCellClicked($event)' 
                       class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs">
                     </ag-grid-angular>
                   </div>

@@ -38,5 +38,20 @@ namespace AspNetCoreApp.API.Data
         {
             return await _context.SaveChangesAsync() > 0 ;
         }
+
+         public async Task<Fields> GenerateField(Fields _fields)
+        {
+            await _context.Fields.AddAsync(_fields);
+            await _context.SaveChangesAsync();
+            return _fields;
+        }
+
+         public async Task<bool> UserExists(string _fieldName)
+        {
+             if(await _context.Fields.AnyAsync(f => f.fi_Name == _fieldName))
+                return true;
+            
+            return false;
+        }
     }
 }

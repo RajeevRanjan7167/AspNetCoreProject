@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RoleComponent } from './role/role.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { ComponentListComponent } from './componentList/componentList.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 // MaterialModule
 import { A11yModule } from '@angular/cdk/a11y';
@@ -97,7 +100,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 export class MaterialModule {}
 
 @NgModule({
-  declarations: [GroupComponent, ResourceComponent, RoleComponent],
+  declarations: [
+    GroupComponent,
+    ResourceComponent,
+    RoleComponent,
+    ComponentListComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -108,6 +116,7 @@ export class MaterialModule {}
     MaterialModule,
     AdminRoutingModule,
     AutocompleteLibModule,
+    NgSelectModule,
     AgGridModule.withComponents([]),
   ],
   providers: [AuthService, ErorrIntercepterProvider],

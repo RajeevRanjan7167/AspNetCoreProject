@@ -1,0 +1,115 @@
+<div class="content">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header card-header-primary" style="height:45px">
+            <h4 class="card-title">Group</h4>
+          </div>
+          <div class="card-body">
+            <form  [formGroup]="compontentForm" (ngSubmit)="compontentCreation()" >
+
+              <div class="row">                
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Name</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group bmd-form-group">
+                    <input type="text" class="form-control" id="compName" formControlName="compName" placeholder="Component Name">
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Component</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group bmd-form-group">
+                    <input type="text" class="form-control" id="componentName" formControlName="componentName" placeholder="Component name with extension">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Group</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- <input type="text" class="form-control" id="roleName" formControlName="roleName" placeholder="Role Name"> -->
+                  <div class="ng-autocomplete">
+                    <ng-autocomplete [data]="data" id="groupName" formControlName="groupName" [searchKeyword]="keyword"
+                      placeHolder="Enter the Group Name"
+                      (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)' historyIdentifier="data"
+                      (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">                                 
+                    </ng-autocomplete>
+                      
+                    <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                      
+                    <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="form-group bmd-form-group">                    
+                      <label for="your-input">Role</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="form-group bmd-form-group">
+                      <input type="text" class="form-control" id="roleName" formControlName="roleName" placeholder="Role Name">
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-1">
+                  <div class="form-group bmd-form-group">                    
+                    <label for="your-input">Flag</label>
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="form-group bmd-form-group">
+                    <select class="browser-default custom-select" id="flag" formControlName="flag">
+                      <option selected *ngFor="let flag of flaglst" [ngValue]="flag">{{flag}}</option>
+                    </select>
+                  </div>
+                </div>                                
+              </div>
+
+              <div class="form-group text-center">
+                <button class="btn btn-success btn mr-2" type="submit">Create</button>
+                <button class="btn btn-danger " (click)="cancel()" type="button">Cancel</button>
+              </div> 
+
+              <div class="row">
+                <div class="col-md-12">   
+                  <div class="form-group bmd-form-group">
+                    <ag-grid-angular style="height: 350px;" colResizeDefault='shift' class="ag-theme-alpine" rowSelection='single'
+                    (rowClicked)='onRowClicked($event)' (cellClicked)='onCellClicked($event)' (selectionChanged) = 'onSelectionChanged($event)'
+                      class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs">
+                    </ag-grid-angular>
+                  </div>
+                </div>   
+              </div> 
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

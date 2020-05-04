@@ -23,7 +23,7 @@ namespace AspNetCoreApp.API.Data
             _context.Remove(entity);
         }
 
-        public async Task<Roles> GetRole( int Id)
+        public async Task<Roles> GetRole(int Id)
         {
             var role = await _context.Roles.FirstOrDefaultAsync(r => r.id == Id);
             return role;
@@ -37,14 +37,14 @@ namespace AspNetCoreApp.API.Data
 
         public async Task<bool> SaveAll()
         {
-            return await _context.SaveChangesAsync() > 0 ;
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> UserExists(string _roleName)
         {
-            if(await _context.Roles.AnyAsync(x=> x.role_Name == _roleName))
+            if (await _context.Roles.AnyAsync(x => x.role_Name == _roleName))
                 return true;
-            
+
             return false;
         }
 
@@ -53,6 +53,8 @@ namespace AspNetCoreApp.API.Data
             await _context.Roles.AddAsync(roles);
             await _context.SaveChangesAsync();
             return roles;
-        }
+        }       
+
+
     }
 }

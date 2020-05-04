@@ -9,7 +9,9 @@ namespace AspNetCoreApp.API.Data
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveAll();
-        Task<IEnumerable<city>> GetFields();
-        Task<city> GetField(int Id);
+        Task<IEnumerable<city>> GetCities();
+        Task<city> GetCity(int Id);
+        Task<city> GenerateCity(city _city);
+        Task<bool> UserExists(string _cityName); 
     }
 }

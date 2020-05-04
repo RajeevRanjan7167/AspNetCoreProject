@@ -1,0 +1,12 @@
+.autocomplete-container .input-container input {
+    font-size: 14px;
+    padding: 0 6px;
+    height: 25px;
+  }
+  .autocomplete-container .suggestions-container {
+    z-index: 9999;
+  }
+
+.ng-autocomplete {
+    width: 335px;
+}

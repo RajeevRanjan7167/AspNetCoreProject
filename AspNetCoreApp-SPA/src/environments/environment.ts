@@ -5,7 +5,11 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5000/api/',
-  apiTFSUrl: 'https://canesoftware.visualstudio.com/'
+  apiTFSUrl: 'https://canesoftware.visualstudio.com/',
+  controlView: 'View',
+  controlEdit: 'Edit',
+  controlCreate: 'Create',
+  controlDelete: 'Delete'
 };
 
 /*

@@ -8,8 +8,8 @@ namespace AspNetCoreApp.API.Helpers
         public static void AddApplicationError(this HttpResponse response, string message)
         {
             response.Headers.Add("Application-Error", message);
-            response.Headers.Add("Access-Control-Expose-Headers","Application-Error");
-            response.Headers.Add("Access-Control-Allow-Origin","*");
+            response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
         }
 
         public static int CalculateAge(this DateTime theDateTime)
@@ -18,6 +18,17 @@ namespace AspNetCoreApp.API.Helpers
             if (theDateTime.AddYears(age) > DateTime.Today)
                 age--;
             return age;
+        }
+
+        public static string strActive(this byte IsActive)
+        {
+            var strString = "";
+            if (IsActive == 0)
+                strString = "Active";
+            else
+                strString = "Inactive";
+
+            return strString;
         }
     }
 }

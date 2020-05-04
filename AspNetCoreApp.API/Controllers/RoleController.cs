@@ -6,6 +6,7 @@ using AspNetCoreApp.API.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AspNetCoreApp.API.Controllers
 {
@@ -22,7 +23,7 @@ namespace AspNetCoreApp.API.Controllers
             _repo = repo;
         }
 
-        [HttpGet("{Id}", Name ="getRole")]
+        [HttpGet("{Id}", Name = "getRole")]
         [AllowAnonymous]
         public async Task<IActionResult> getRole(int id)
         {
@@ -36,8 +37,8 @@ namespace AspNetCoreApp.API.Controllers
         public async Task<IActionResult> getRoles()
         {
             var roles = await _repo.GetRoles();
-            var rolesToReturn = _mapper.Map<roleForListDTO>(roles);
-            return  Ok(rolesToReturn);
+            var rolesToReturn = _mapper.Map<IEnumerable<roleForListDTO>>(roles);
+            return Ok(rolesToReturn);
         }
 
         [HttpPut("{id}")]
@@ -45,11 +46,11 @@ namespace AspNetCoreApp.API.Controllers
         public async Task<IActionResult> updateRole(int id, roleForUpdateDTO _roleForUpdateDTO)
         {
             var roleForRepo = await _repo.GetRole(id);
-            _mapper.Map(_roleForUpdateDTO , roleForRepo);
-            
+            _mapper.Map(_roleForUpdateDTO, roleForRepo);
+
             if (await _repo.SaveAll())
                 return NoContent();
-            
+
             throw new Exception($"Updating user {id} failed on save");
         }
 
@@ -57,16 +58,35 @@ namespace AspNetCoreApp.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> generateRole(roleForCreateDTO _roleForCreateDTO)
         {
-            if( await _repo.UserExists(_roleForCreateDTO.role_Name))
+            if (await _repo.UserExists(_roleForCreateDTO.role_Name))
                 return BadRequest("Role name already exists !!");
-            
+
             var createToRole = _mapper.Map<Roles>(_roleForCreateDTO);
             var createdRole = await _repo.GenerateRole(createToRole);
 
             var roleToReturn = _mapper.Map<roleForListDTO>(createdRole);
-             return CreatedAtRoute("getRole", new { Controller ="Role", 
-                id = createdRole.id},roleToReturn);
+            return CreatedAtRoute("getRole", new
+            {
+                Controller = "Role",
+                id = createdRole.id
+            }, roleToReturn);
         }
 
+        [HttpDelete("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> deleteRole(int id)
+        {
+            var roleEntity = await _repo.GetRole(id);
+            if (roleEntity == null)
+            {
+                return BadRequest("Role name does not exists !!");
+            }
+
+            _repo.Delete(roleEntity);
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Deleting role {id} failed on save");
+        }
     }
 }
